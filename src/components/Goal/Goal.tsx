@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { App } from './../../App';
 
 // Step1Component
 export const Goal = ({ onNext, selectedOption }) => {
@@ -21,7 +22,7 @@ export const Goal = ({ onNext, selectedOption }) => {
         What are your goals?
       </h2>
 
-      <label className="block size-[172px] border rounded-[20px] border-separatorLight">
+      <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgA bg-content bg-no-repeat bg-right">
         <input
           className="sr-only"
           type="radio"
@@ -30,12 +31,12 @@ export const Goal = ({ onNext, selectedOption }) => {
           onChange={() => handleSelection('option1')}
           checked={selectedOption === 'option1'}
         />
-        <p className="text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
+        <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
           Lose Weight
         </p>
       </label>
 
-      <label className="block size-[172px] border rounded-[20px] border-separatorLight">
+      <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgB bg-content bg-no-repeat bg-right">
         <input
           className="sr-only"
           type="radio"
@@ -44,11 +45,11 @@ export const Goal = ({ onNext, selectedOption }) => {
           onChange={() => handleSelection('option2')}
           checked={selectedOption === 'option2'}
         />
-        <p className="text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
+        <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
           Gain Muscle
         </p>
       </label>
-      <label className="block size-[172px] border rounded-[20px] border-separatorLight">
+      <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgC bg-content bg-no-repeat bg-right">
         <input
           className="sr-only"
           type="radio"
@@ -57,11 +58,11 @@ export const Goal = ({ onNext, selectedOption }) => {
           onChange={() => handleSelection('option3')}
           checked={selectedOption === 'option3'}
         />
-        <p className="text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
+        <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
           Develop healthy habits
         </p>
       </label>
-      <label className="block size-[172px] border rounded-[20px] border-separatorLight">
+      <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgD bg-content bg-no-repeat bg-right">
         <input
           className="sr-only"
           type="radio"
@@ -70,7 +71,7 @@ export const Goal = ({ onNext, selectedOption }) => {
           onChange={() => handleSelection('option4')}
           checked={selectedOption === 'option4'}
         />
-        <p className="text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
+        <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
           Increase Energy Levels
         </p>
       </label>
