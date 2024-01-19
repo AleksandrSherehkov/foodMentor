@@ -1,8 +1,8 @@
 import { FC, FormEvent } from 'react';
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
+import { FormData } from '../../utils/definitions';
 
-// Определение структуры одного поведения
 interface Behavior {
   label: string;
   name: string;
@@ -10,27 +10,25 @@ interface Behavior {
 }
 
 const behaviors: Behavior[] = [
-  { label: "I don't rest enough", name: 'dontRestEnough', icon: 'icon-rest' },
-  { label: 'I have a sweet tooth', name: 'sweetTooth', icon: 'icon-sweet' },
-  { label: 'I have too much soda', name: 'tooMuchSoda', icon: 'icon-soda' },
-  { label: 'I eat many salty foods', name: 'saltyFoods', icon: 'icon-salty' },
-  { label: 'I enjoy midnight snacks', name: 'midnightSnacks', icon: 'icon-snacks' },
-  { label: 'None of the above', name: 'none', icon: 'icon-none' },
+  { label: "I don't rest\n enough", name: 'dontRestEnough', icon: 'moon' },
+  { label: 'I have a sweet\n tooth', name: 'sweetTooth', icon: 'sweet' },
+  { label: 'I have too\n much soda', name: 'tooMuchSoda', icon: 'soda' },
+  { label: 'I eat many\n salty foods', name: 'saltyFoods', icon: 'salt' },
+  { label: 'I enjoy\n midnight\n snacks', name: 'midnightSnacks', icon: 'snacks' },
+  { label: 'None of the\n above', name: 'none', icon: 'rest' },
 ];
 
 interface BehaviorsProps {
   onNext: () => void;
   onBack: () => void;
-  formData: { destructiveBehaviors: Record<string, boolean> };
-  setFormData: (formData: any) => void;
+  formData: FormData;
+  setFormData: (formData: FormData) => void;
 }
 
 export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFormData }) => {
   const handleCheckboxChange = (checked: boolean, name: string) => {
-    // Если выбрано 'None of the above', то сбросить все другие
     const newDestructiveBehaviors = name === 'none' ? {} : { ...formData.destructiveBehaviors };
     if (name !== 'none') {
-      // Сбросить 'None of the above', если выбрано другое поведение
       delete newDestructiveBehaviors.none;
     }
 
@@ -63,13 +61,20 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
             Disadvantages:
           </legend>
           {behaviors.map(behavior => (
-            <label key={behavior.name} className="block">
+            <label
+              key={behavior.name}
+              className="className={`flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight `}"
+            >
               <input
+                className="sr-only"
                 type="checkbox"
+                name={behavior.name}
                 onChange={e => handleCheckboxChange(e.target.checked, behavior.name)}
                 checked={formData.destructiveBehaviors[behavior.name] || false}
               />
-              {behavior.label}
+              <p className="whitespace-pre-line text-generalBlack text-xs font-normal  leading-[18px] tracking-[0.3px]">
+                {behavior.label}
+              </p>
             </label>
           ))}
         </fieldset>
