@@ -6,6 +6,7 @@ import { PhysicalExercise } from '../PhysicalExercise/PhysicalExercise';
 
 const initialState = {
   goal: '',
+  measurements: '',
   height: 0,
   weight: 0,
   destructiveBehaviors: {},
