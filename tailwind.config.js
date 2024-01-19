@@ -11,6 +11,7 @@ export default {
         darkgray: '#616161',
         separatorLight: '#E1E1E1',
         disableGreen: '#5FCB39',
+        liteGreen: 'rgba(95, 203, 57, 0.20)',
       },
       backgroundImage: {
         goalBgA:
