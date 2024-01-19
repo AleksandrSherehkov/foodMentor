@@ -2,6 +2,7 @@ import { FC, FormEvent } from 'react';
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
 import { FormData } from '../../utils/definitions';
+import { Button } from '../Button/Button';
 
 interface Behavior {
   label: string;
@@ -56,7 +57,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
       <Title text="Destructive behaviors" />
       <Description text="We all have them! Which are yours?" />
       <form onSubmit={handleSubmit}>
-        <fieldset className="flex flex-wrap gap-[15px]">
+        <fieldset className="flex flex-wrap gap-[15px] mb-[129px]">
           <legend className="sr-only mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             Disadvantages:
           </legend>
@@ -78,9 +79,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
             </label>
           ))}
         </fieldset>
-        <button type="submit" className="p-2 bg-blue-500 text-white" disabled={isDisabled}>
-          Continue
-        </button>
+        <Button type="submit" text="Continue" isDisabled={isDisabled} />
       </form>
     </div>
   );
