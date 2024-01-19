@@ -10,6 +10,7 @@ export default {
         generalBlack: '#2D3436',
         darkgray: '#616161',
         separatorLight: '#E1E1E1',
+        disableGreen: '#5FCB39',
       },
       backgroundImage: {
         goalBgA:
