@@ -2,6 +2,7 @@ import { FC, FormEvent } from 'react';
 import { FormData } from '../../utils/definitions';
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
+import { Button } from '../Button/Button';
 
 const physicalExerciseOptions = [
   { label: 'Hardly at all', value: 'Hardly at all' },
@@ -68,9 +69,7 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
             </label>
           ))}
         </fieldset>
-        <button type="submit" className="p-2 bg-blue-500 text-white">
-          Finish
-        </button>
+        <Button type="submit" text="Finish" isDisabled={formData.activity === ''} />
       </form>
     </div>
   );
