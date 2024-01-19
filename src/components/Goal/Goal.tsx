@@ -7,10 +7,10 @@ interface GoalProps {
 }
 
 const options = [
-  { label: 'Lose Weight', value: 'Lose Weight', bg: 'goalBgA' },
-  { label: 'Gain Muscle', value: 'Gain Muscle', bg: 'goalBgB' },
-  { label: 'Develop healthy habits', value: 'Develop healthy habits', bg: 'goalBgC' },
-  { label: 'Increase Energy Levels', value: 'Increase Energy Levels', bg: 'goalBgD' },
+  { label: 'Lose\n Weight', value: 'Lose Weight', bg: 'goalBgA' },
+  { label: 'Gain\n Muscle', value: 'Gain Muscle', bg: 'goalBgB' },
+  { label: 'Develop\n healthy\n habits', value: 'Develop healthy habits', bg: 'goalBgC' },
+  { label: 'Increase\n Energy\n Levels', value: 'Increase Energy Levels', bg: 'goalBgD' },
 ];
 
 export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
@@ -44,7 +44,7 @@ export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
                 onChange={() => handleSelection(option.value)}
                 checked={goal === option.value}
               />
-              <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
+              <p className="whitespace-pre-line text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
                 {option.label}
               </p>
             </label>
