@@ -44,7 +44,9 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onNext();
+    if (!isDisabled) {
+      onNext();
+    }
   };
 
   const isDisabled = !Object.values(formData.destructiveBehaviors).some(value => value);
