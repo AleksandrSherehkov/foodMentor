@@ -7,10 +7,10 @@ interface GoalProps {
 }
 
 const options = [
-  { label: 'Lose Weight', value: 'Lose Weight' },
-  { label: 'Gain Muscle', value: 'Gain Muscle' },
-  { label: 'Develop healthy habits', value: 'Develop healthy habits' },
-  { label: 'Increase Energy Levels', value: 'Increase Energy Levels' },
+  { label: 'Lose Weight', value: 'Lose Weight', bg: 'goalBgA' },
+  { label: 'Gain Muscle', value: 'Gain Muscle', bg: 'goalBgB' },
+  { label: 'Develop healthy habits', value: 'Develop healthy habits', bg: 'goalBgC' },
+  { label: 'Increase Energy Levels', value: 'Increase Energy Levels', bg: 'goalBgD' },
 ];
 
 export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
@@ -34,7 +34,7 @@ export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
           {options.map(option => (
             <label
               key={option.value}
-              className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgA bg-content bg-no-repeat bg-right"
+              className={`flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-${option.bg} bg-content bg-no-repeat bg-right`}
             >
               <input
                 className="sr-only"
