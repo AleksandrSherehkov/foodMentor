@@ -1,74 +1,54 @@
+import { FC } from 'react';
 import { Title } from '../Title/Title';
+import { Description } from '../Description/Description';
+interface GoalProps {
+  onNext: (value: string) => void;
+  goal: string;
+}
 
-export const Goal = ({ onNext, selectedOption }) => {
-  const handleSelection = value => {
+const options = [
+  { label: 'Lose Weight', value: 'Lose Weight' },
+  { label: 'Gain Muscle', value: 'Gain Muscle' },
+  { label: 'Develop healthy habits', value: 'Develop healthy habits' },
+  { label: 'Increase Energy Levels', value: 'Increase Energy Levels' },
+];
+
+export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
+  const handleSelection = (value: string) => {
     onNext(value);
   };
 
   return (
     <div className="mx-auto max-w-[360px]">
-      <Title text="The Goal" />
-      <p className="mb-[15px] text-darkGray text-sm font-normal leading-[24px] tracking-[0.25px] text-center">
-        Focus on the health benefits you need. Balanced nutrition will let you achieve them
-      </p>
+      <Title text="The Goals" />
+      <Description
+        text={
+          'Focus on the health benefits you need.\nBalanced nutrition will let you achieve them'
+        }
+      />
       <form>
         <fieldset className="flex flex-wrap gap-4">
           <legend className="mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             What are your goals?
           </legend>
-          <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgA bg-content bg-no-repeat bg-right">
-            <input
-              className="sr-only"
-              type="radio"
-              name="option"
-              value="Lose Weight"
-              onChange={() => handleSelection('option1')}
-              checked={selectedOption === 'option1'}
-            />
-            <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
-              Lose Weight
-            </p>
-          </label>
-
-          <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgB bg-content bg-no-repeat bg-right">
-            <input
-              className="sr-only"
-              type="radio"
-              name="option"
-              value="Gain Muscle"
-              onChange={() => handleSelection('option2')}
-              checked={selectedOption === 'option2'}
-            />
-            <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
-              Gain Muscle
-            </p>
-          </label>
-          <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgC bg-content bg-no-repeat bg-right">
-            <input
-              className="sr-only"
-              type="radio"
-              name="option"
-              value="Develop healthy habits"
-              onChange={() => handleSelection('option3')}
-              checked={selectedOption === 'option3'}
-            />
-            <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
-              Develop healthy habits
-            </p>
-          </label>
-          <label className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgD bg-content bg-no-repeat bg-right">
-            <input
-              className="sr-only"
-              type="radio"
-              name="option"
-              value="Increase Energy Levels"
-              onChange={() => handleSelection('option4')}
-              checked={selectedOption === 'option4'}
-            />
-            <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
-              Increase Energy Levels
-            </p>
-          </label>
+          {options.map(option => (
+            <label
+              key={option.value}
+              className="flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-goalBgA bg-content bg-no-repeat bg-right"
+            >
+              <input
+                className="sr-only"
+                type="radio"
+                name="goal"
+                value={option.value}
+                onChange={() => handleSelection(option.value)}
+                checked={goal === option.value}
+              />
+              <p className="w-[83px] text-generalBlack text-[17px] font-medium  leading-[23px] tracking-[0.21px]">
+                {option.label}
+              </p>
+            </label>
+          ))}
         </fieldset>
       </form>
     </div>
