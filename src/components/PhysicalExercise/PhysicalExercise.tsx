@@ -58,7 +58,7 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
               <input
                 className="sr-only"
                 type="radio"
-                name="goal"
+                name="exercise"
                 value={option.value}
                 onChange={() => handleSelection(option.value)}
                 checked={formData.activity === option.value}
