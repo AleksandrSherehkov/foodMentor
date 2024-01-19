@@ -1,3 +1,5 @@
+import { FC, FormEvent } from 'react';
+import { FormData } from '../../utils/definitions';
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
 
@@ -8,12 +10,24 @@ const physicalExerciseOptions = [
   { label: 'Fitness 5-7\n times a week', value: 'Fitness 5-7 times a week' },
 ];
 
-export const PhysicalExercise = ({ onBack, formData, setFormData, resetForm }) => {
-  const handleSelection = value => {
+interface PhysicalExerciseProps {
+  onBack: () => void;
+  formData: FormData;
+  setFormData: (formData: FormData) => void;
+  resetForm: () => void;
+}
+
+export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
+  onBack,
+  formData,
+  setFormData,
+  resetForm,
+}) => {
+  const handleSelection = (value: string) => {
     setFormData({ ...formData, activity: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Final FormData:', formData);
     resetForm();
@@ -30,7 +44,7 @@ export const PhysicalExercise = ({ onBack, formData, setFormData, resetForm }) =
           'Physical exercise means a lot for a woman who\nwants to lose kilos and works at the office'
         }
       />
-      <form>
+      <form onClick={handleSubmit}>
         <fieldset className="flex flex-col items-end  gap-[15px] bg-physicalExercise bg-content bg-no-repeat bg-[left_bottom_53px]">
           <legend className="mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             How active are you during the day?
@@ -54,7 +68,7 @@ export const PhysicalExercise = ({ onBack, formData, setFormData, resetForm }) =
             </label>
           ))}
         </fieldset>
-        <button type="submit" className="p-2 bg-blue-500 text-white" onClick={handleSubmit}>
+        <button type="submit" className="p-2 bg-blue-500 text-white">
           Finish
         </button>
       </form>
