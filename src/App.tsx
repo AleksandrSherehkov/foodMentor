@@ -1,3 +1,9 @@
+import { MultiStepForm } from './components/MultiStepForm/MultiStepForm';
+
 export const App = () => {
-  return <div>App</div>;
+  return (
+    <main>
+      <MultiStepForm />
+    </main>
+  );
 };
