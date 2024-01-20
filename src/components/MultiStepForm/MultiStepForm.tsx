@@ -1,10 +1,12 @@
 import { FC } from 'react';
+
+import { FormData } from '../../utils/definitions';
+import { initialState } from '../../data/initialState';
+
 import { Goal } from '../Goal/Goal';
 import { MeasureYourself } from '../MeasureYourself/MeasureYourself';
 import { Behaviors } from '../Behaviors/Behaviors';
 import { PhysicalExercise } from '../PhysicalExercise/PhysicalExercise';
-import { FormData } from '../../utils/definitions';
-import { initialState } from '../../data/initialState';
 
 interface MultiStepFormProps {
   step: number;

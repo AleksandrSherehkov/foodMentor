@@ -1,9 +1,11 @@
 import { FC, FormEvent, useEffect, useState } from 'react';
+
+import { FormData } from '../../utils/definitions';
+import { convertMeasurements } from '../../utils/convertMeasurements';
+
 import { Title } from '../Title/Title';
 import { Description } from '../Description/Description';
 import { Button } from '../Button/Button';
-import { FormData } from '../../utils/definitions';
-import { convertMeasurements } from '../../utils/convertMeasurements';
 import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
 
 interface MeasureYourselfProps {

@@ -1,7 +1,10 @@
 import { FC } from 'react';
+
+import { goalOptions } from '../../data/formOptions';
+
 import { Title } from '../Title/Title';
 import { Description } from '../Description/Description';
-import { goalOptions } from '../../data/formOptions';
+
 interface GoalProps {
   onNext: (value: string) => void;
   goal: string;

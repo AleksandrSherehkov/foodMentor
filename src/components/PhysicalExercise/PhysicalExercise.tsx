@@ -1,9 +1,11 @@
 import { FC, FormEvent } from 'react';
+
 import { FormData } from '../../utils/definitions';
+import { physicalExerciseOptions } from '../../data/formOptions';
+
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
 import { Button } from '../Button/Button';
-import { physicalExerciseOptions } from '../../data/formOptions';
 
 interface PhysicalExerciseProps {
   formData: FormData;

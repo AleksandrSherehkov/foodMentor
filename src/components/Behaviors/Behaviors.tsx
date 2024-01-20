@@ -1,9 +1,11 @@
 import { FC, FormEvent } from 'react';
-import { Description } from '../Description/Description';
-import { Title } from '../Title/Title';
+
 import { FormData } from '../../utils/definitions';
-import { Button } from '../Button/Button';
 import { behaviorsOptions } from '../../data/formOptions';
+
+import { Title } from '../Title/Title';
+import { Description } from '../Description/Description';
+import { Button } from '../Button/Button';
 
 interface BehaviorsProps {
   onNext: () => void;
@@ -13,21 +15,14 @@ interface BehaviorsProps {
 
 export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData }) => {
   const handleCheckboxChange = (checked: boolean, name: string) => {
-    console.log(formData.destructiveBehaviors);
-    const newDestructiveBehaviors = name === 'none' ? {} : { ...formData.destructiveBehaviors };
-    if (name !== 'none') {
-      delete newDestructiveBehaviors.none;
-    }
-
+    const { destructiveBehaviors } = formData;
+    const newDestructiveBehaviors = name === 'none' ? {} : { ...destructiveBehaviors };
+    if (name !== 'none') delete newDestructiveBehaviors.none;
     setFormData({
       ...formData,
-      destructiveBehaviors: {
-        ...newDestructiveBehaviors,
-        [name]: checked,
-      },
+      destructiveBehaviors: { ...newDestructiveBehaviors, [name]: checked },
     });
   };
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!isDisabled) {
