@@ -1,6 +1,6 @@
-import { Behavior } from '../utils/definitions';
+import { Behavior, GoalOption, PhysicalExerciseOption } from '../utils/definitions';
 
-export const goalOptions = [
+export const goalOptions: GoalOption[] = [
   {
     label: 'Lose\n Weight',
     value: 'Lose Weight',
@@ -32,7 +32,7 @@ export const behaviorsOptions: Behavior[] = [
   { label: 'None of the\n above', name: 'none', icon: 'rest' },
 ];
 
-export const physicalExerciseOptions = [
+export const physicalExerciseOptions: PhysicalExerciseOption[] = [
   { label: 'Hardly at all', value: 'Hardly at all' },
   { label: 'Fitness 1-2\n times a week', value: 'Fitness 1-2 times a week' },
   { label: 'Fitness 3-5\n times a week', value: 'Fitness 3-5 times a week' },

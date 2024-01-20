@@ -7,8 +7,19 @@ export interface FormData {
   activity: string;
 }
 
+export interface GoalOption {
+  label: string;
+  value: string;
+  bg: string;
+}
+
 export interface Behavior {
   label: string;
   name: string;
   icon: string;
+}
+
+export interface PhysicalExerciseOption {
+  label: string;
+  value: string;
 }
