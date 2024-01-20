@@ -4,22 +4,22 @@ export const goalOptions: GoalOption[] = [
   {
     label: 'Lose\n Weight',
     value: 'Lose Weight',
-    bg: '../../src/assets/images/goalA.svg',
+    bg: '/icons/goalA.svg',
   },
   {
     label: 'Gain\n Muscle',
     value: 'Gain Muscle',
-    bg: '/src/assets/images/goalB.svg',
+    bg: '/icons/goalB.svg',
   },
   {
     label: 'Develop\n healthy\n habits',
     value: 'Develop healthy habits',
-    bg: '/src/assets/images/goalC.svg',
+    bg: '/icons/goalC.svg',
   },
   {
     label: 'Increase\n Energy\n Levels',
     value: 'Increase Energy Levels',
-    bg: '/src/assets/images/goalD.svg',
+    bg: '/icons/goalD.svg',
   },
 ];
 
