@@ -107,7 +107,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           value={weight}
           onChange={e => setFormData({ ...formData, weight: e.target.value })}
         />
-        {showError && <ErrorMassage text="Enter your height and weight to continue." />}
+        {showError && <ErrorMassage text="Enter your height and weight to continue.(number)" />}
         <Title text="Measure Yourself" />
         <Description text="What are your height and body weight? " />
         <div className="mt-[54px]">

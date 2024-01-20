@@ -6,6 +6,7 @@ import { physicalExerciseOptions } from '../../data/formOptions';
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
 import { Button } from '../Button/Button';
+import { toast } from 'react-toastify';
 
 interface PhysicalExerciseProps {
   formData: FormData;
@@ -24,7 +25,7 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Final FormData:', formData);
+    toast.success('Final FormData:', formData);
     resetForm();
   };
 
