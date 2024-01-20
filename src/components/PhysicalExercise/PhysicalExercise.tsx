@@ -42,7 +42,7 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
           {physicalExerciseOptions.map(option => (
             <label
               key={option.value}
-              className={`flex items-center  p-2 min-w-[172px] min-h-20 border rounded-[20px] border-separatorLight transition duration-300 ease-in-out ${
+              className={`flex items-center  pl-[15px] min-w-[172px] min-h-20 border rounded-[20px] border-separatorLight transition duration-300 ease-in-out ${
                 formData.activity === option.value
                   ? 'border-blue-500 shadow-lg scale-105'
                   : 'hover:border-green-500 hover:shadow-md hover:scale-105'

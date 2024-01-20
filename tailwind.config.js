@@ -23,7 +23,7 @@ export default {
           "url('/src/assets/images/goalC.svg'), linear-gradient(214deg, #F1F1F1 12.33%, #FFF 69.93%)",
         goalBgD:
           "url('/src/assets/images/goalD.svg'), linear-gradient(214deg, #F1F1F1 12.33%, #FFF 69.93%)",
-        physicalExercise: "url('/src/assets/images/physicalExercise.svg')",
+        physicalExercise: "url('/icons/physicalExercise.svg')",
       },
     },
   },
