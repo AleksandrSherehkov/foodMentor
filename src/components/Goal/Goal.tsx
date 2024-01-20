@@ -13,7 +13,7 @@ export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
   };
 
   return (
-    <div className="mx-auto max-w-[360px]">
+    <div className="mx-auto max-w-[360px] mt-[15px]">
       <Title text="The Goals" />
       <Description
         text={

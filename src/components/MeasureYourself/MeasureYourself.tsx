@@ -48,7 +48,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   }, [height, isDisabled, weight]);
 
   return (
-    <div className="mx-auto max-w-[360px]">
+    <div className="mx-auto max-w-[360px] mt-[90px]">
       <form onSubmit={handleSubmit}>
         <fieldset className="flex  mb-[10px]">
           <legend className="sr-only mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">

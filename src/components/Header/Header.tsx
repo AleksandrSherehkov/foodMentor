@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Avocado from '../../assets/icons/avocado.svg?react';
 
 interface HeaderProps {
   onBack: () => void;
@@ -13,6 +14,7 @@ export const Header: FC<HeaderProps> = ({ onBack, canGoBack }) => {
           Back
         </button>
       )}
+      <Avocado />
       <p className="text-2xl font-bold leading-9 tracking-[0.25px] text-depGray">Food Mentor</p>
     </header>
   );

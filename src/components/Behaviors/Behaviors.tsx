@@ -13,6 +13,7 @@ interface BehaviorsProps {
 
 export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData }) => {
   const handleCheckboxChange = (checked: boolean, name: string) => {
+    console.log(formData.destructiveBehaviors);
     const newDestructiveBehaviors = name === 'none' ? {} : { ...formData.destructiveBehaviors };
     if (name !== 'none') {
       delete newDestructiveBehaviors.none;
@@ -37,7 +38,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData })
   const isDisabled = !Object.values(formData.destructiveBehaviors).some(value => value);
 
   return (
-    <div className="mx-auto max-w-[360px]">
+    <div className="mx-auto max-w-[360px] mt-4">
       <Title text="Destructive behaviors" />
       <Description text="We all have them! Which are yours?" />
       <form onSubmit={handleSubmit} className="mt-[15px]">
@@ -48,7 +49,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData })
           {behaviorsOptions.map(behavior => (
             <label
               key={behavior.name}
-              className={`flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight transition duration-300 ease-in-out ${
+              className={`flex items-center  p-2 min-w-[172px] min-h-[60px] border rounded-[15px] border-separatorLight transition duration-300 ease-in-out ${
                 formData.destructiveBehaviors[behavior.name]
                   ? 'border-blue-300 shadow-lg'
                   : 'hover:border-green-500 hover:shadow-md'

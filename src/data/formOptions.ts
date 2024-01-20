@@ -4,7 +4,7 @@ export const goalOptions: GoalOption[] = [
   {
     label: 'Lose\n Weight',
     value: 'Lose Weight',
-    bg: '/src/assets/images/goalA.svg',
+    bg: '../../src/assets/images/goalA.svg',
   },
   {
     label: 'Gain\n Muscle',
