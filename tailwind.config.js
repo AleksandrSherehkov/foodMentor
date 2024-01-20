@@ -8,7 +8,8 @@ export default {
       },
       colors: {
         generalBlack: '#2D3436',
-        darkgray: '#616161',
+        darkGray: '#616161',
+        depGray: '#374234',
         separatorLight: '#E1E1E1',
         disableGreen: '#5FCB39',
         liteGreen: 'rgba(95, 203, 57, 0.20)',

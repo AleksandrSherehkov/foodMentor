@@ -7,10 +7,26 @@ interface GoalProps {
 }
 
 const options = [
-  { label: 'Lose\n Weight', value: 'Lose Weight', bg: 'goalBgA' },
-  { label: 'Gain\n Muscle', value: 'Gain Muscle', bg: 'goalBgB' },
-  { label: 'Develop\n healthy\n habits', value: 'Develop healthy habits', bg: 'goalBgC' },
-  { label: 'Increase\n Energy\n Levels', value: 'Increase Energy Levels', bg: 'goalBgD' },
+  {
+    label: 'Lose\n Weight',
+    value: 'Lose Weight',
+    bg: '/src/assets/images/goalA.svg',
+  },
+  {
+    label: 'Gain\n Muscle',
+    value: 'Gain Muscle',
+    bg: '/src/assets/images/goalB.svg',
+  },
+  {
+    label: 'Develop\n healthy\n habits',
+    value: 'Develop healthy habits',
+    bg: '/src/assets/images/goalC.svg',
+  },
+  {
+    label: 'Increase\n Energy\n Levels',
+    value: 'Increase Energy Levels',
+    bg: '/src/assets/images/goalD.svg',
+  },
 ];
 
 export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
@@ -34,7 +50,14 @@ export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
           {options.map(option => (
             <label
               key={option.value}
-              className={`flex items-center pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-${option.bg} bg-content bg-no-repeat bg-right`}
+              style={{
+                backgroundImage: `url(${option.bg}), linear-gradient(214deg, #F1F1F1 12.33%, #FFF 69.93%)`,
+              }}
+              className={`flex items-center cursor-pointer pl-[10px] size-[172px] border rounded-[20px] border-separatorLight bg-content bg-no-repeat bg-right transition duration-300 ease-in-out ${
+                goal === option.value
+                  ? 'border-blue-500 shadow-lg scale-105'
+                  : 'hover:border-green-500 hover:shadow-md hover:scale-105'
+              } focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500`}
             >
               <input
                 className="sr-only"

@@ -60,12 +60,12 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
         Back
       </button>
       <form onSubmit={handleSubmit}>
-        <fieldset className="flex  mb-[10px] ">
+        <fieldset className="flex  mb-[10px]">
           <legend className="sr-only mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             Measurement system:
           </legend>
           <label
-            className={`flex justify-center items-center w-1/2 py-[6px] pl-3 border-y border-l rounded-l-[10px] border-disableGreen ${
+            className={`flex justify-center items-center cursor-pointer w-1/2 py-[6px] pl-3 border-y border-l rounded-l-[10px] border-disableGreen ${
               formData.measurements === 'imperial' ? 'bg-liteGreen' : ''
             }`}
           >
@@ -82,7 +82,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
             </p>
           </label>
           <label
-            className={`flex justify-center items-center w-1/2 py-[6px] px-3 border-y border-r rounded-r-[10px] border-disableGreen ${
+            className={`flex justify-center items-center cursor-pointer w-1/2 py-[6px] px-3 border-y border-r rounded-r-[10px] border-disableGreen ${
               formData.measurements === 'metric' ? 'bg-liteGreen' : ''
             }`}
           >
@@ -100,14 +100,14 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           </label>
         </fieldset>
         <input
-          className="placeholder:text-darkgray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border mb-[10px]  py-5 px-[15px] border rounded-[10px] border-separatorLight"
-          type="height"
+          className="placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border mb-[10px] py-5 px-[15px] border rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500"
+          type="number"
           placeholder={heightPlaceholder}
           value={height}
           onChange={e => setFormData({ ...formData, height: e.target.value })}
         />
         <input
-          className="placeholder:text-darkgray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border mb-[45px]  py-5 px-[15px] border rounded-[10px] border-separatorLight "
+          className="placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border mb-[45px]  py-5 px-[15px] border rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500"
           type="number"
           placeholder={weightPlaceholder}
           value={weight}

@@ -66,7 +66,11 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
           {behaviors.map(behavior => (
             <label
               key={behavior.name}
-              className="flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight"
+              className={`flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight transition duration-300 ease-in-out ${
+                formData.destructiveBehaviors[behavior.name]
+                  ? 'border-blue-500 shadow-lg'
+                  : 'hover:border-green-500 hover:shadow-md'
+              } focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500`}
             >
               <input
                 className="sr-only"
