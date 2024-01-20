@@ -1,8 +1,10 @@
-import { FC, FormEvent } from 'react';
+import { FC, FormEvent, useEffect, useState } from 'react';
 import { Title } from '../Title/Title';
 import { Description } from '../Description/Description';
 import { Button } from '../Button/Button';
 import { FormData } from '../../utils/definitions';
+import { convertMeasurements } from '../../utils/convertMeasurements';
+import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
 
 interface MeasureYourselfProps {
   onNext: () => void;
@@ -17,6 +19,8 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   formData,
   setFormData,
 }) => {
+  const [showError, setShowError] = useState(false);
+  console.log(`showError:`, showError);
   const { height, weight } = formData;
   const isDisabled = !height || !weight;
   const heightPlaceholder = formData.measurements === 'imperial' ? 'Height (ft)' : 'Height (cm)';
@@ -24,7 +28,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
 
   const handleSelection = (value: string) => {
     if (value !== formData.measurements) {
-      convertMeasurements(value);
+      convertMeasurements(value, formData, setFormData);
     } else {
       setFormData({ ...formData, measurements: value });
     }
@@ -32,27 +36,17 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!isDisabled) {
+    if (isDisabled) {
+      setShowError(true);
+    } else {
+      setShowError(false);
       onNext();
     }
   };
 
-  const convertMeasurements = (measurementSystem: string) => {
-    const heightNumber = formData.height ? parseFloat(formData.height) : 0;
-    const weightNumber = formData.weight ? parseFloat(formData.weight) : 0;
-
-    const newHeight = measurementSystem === 'metric' ? heightNumber * 30.48 : heightNumber / 30.48;
-
-    const newWeight =
-      measurementSystem === 'metric' ? weightNumber * 0.453592 : weightNumber / 0.453592;
-
-    setFormData({
-      ...formData,
-      height: newHeight ? newHeight.toFixed(2) : '',
-      weight: newWeight ? newWeight.toFixed(2) : '',
-      measurements: measurementSystem,
-    });
-  };
+  useEffect(() => {
+    setShowError(isDisabled);
+  }, [height, isDisabled, weight]);
 
   return (
     <div className="mx-auto max-w-[360px]">
@@ -107,12 +101,15 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           onChange={e => setFormData({ ...formData, height: e.target.value })}
         />
         <input
-          className="placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border mb-[45px]  py-5 px-[15px] border rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500"
+          className={`placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border py-5 px-[15px]  rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500 ${
+            !showError ? 'mb-[45px]' : ''
+          }`}
           type="number"
           placeholder={weightPlaceholder}
           value={weight}
           onChange={e => setFormData({ ...formData, weight: e.target.value })}
         />
+        {showError && <ErrorMassage text="Enter your height and weight to continue." />}
         <Title text="Measure Yourself" />
         <Description text="What are your height and body weight? " />
         <div className="mt-[54px]">
