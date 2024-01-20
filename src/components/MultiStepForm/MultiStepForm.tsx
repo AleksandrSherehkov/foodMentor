@@ -1,23 +1,20 @@
-import { useState } from 'react';
+import { FC } from 'react';
 import { Goal } from '../Goal/Goal';
 import { MeasureYourself } from '../MeasureYourself/MeasureYourself';
 import { Behaviors } from '../Behaviors/Behaviors';
 import { PhysicalExercise } from '../PhysicalExercise/PhysicalExercise';
+import { FormData } from '../../utils/definitions';
 import { initialState } from '../../data/initialState';
 
-export const MultiStepForm = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState(initialState);
-
+interface MultiStepFormProps {
+  step: number;
+  setStep: (step: number) => void;
+  formData: FormData;
+  setFormData: (formData: FormData) => void;
+}
+export const MultiStepForm: FC<MultiStepFormProps> = ({ step, setStep, formData, setFormData }) => {
   const nextStep = () => {
-    setStep(prevStep => prevStep + 1);
-  };
-
-  const prevStep = () => {
-    if (step === 2) {
-      setFormData({ ...formData, goal: '' });
-    }
-    setStep(prevStep => prevStep - 1);
+    setStep(step + 1);
   };
 
   const resetForm = () => {
@@ -36,28 +33,11 @@ export const MultiStepForm = () => {
         />
       )}
       {step === 2 && (
-        <MeasureYourself
-          onNext={nextStep}
-          onBack={prevStep}
-          formData={formData}
-          setFormData={setFormData}
-        />
+        <MeasureYourself onNext={nextStep} formData={formData} setFormData={setFormData} />
       )}
-      {step === 3 && (
-        <Behaviors
-          onNext={nextStep}
-          onBack={prevStep}
-          formData={formData}
-          setFormData={setFormData}
-        />
-      )}
+      {step === 3 && <Behaviors onNext={nextStep} formData={formData} setFormData={setFormData} />}
       {step === 4 && (
-        <PhysicalExercise
-          onBack={prevStep}
-          formData={formData}
-          setFormData={setFormData}
-          resetForm={resetForm}
-        />
+        <PhysicalExercise formData={formData} setFormData={setFormData} resetForm={resetForm} />
       )}
     </div>
   );

@@ -8,14 +8,13 @@ import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
 
 interface MeasureYourselfProps {
   onNext: () => void;
-  onBack: () => void;
   formData: FormData;
   setFormData: (formData: FormData) => void;
 }
 
 export const MeasureYourself: FC<MeasureYourselfProps> = ({
   onNext,
-  onBack,
+
   formData,
   setFormData,
 }) => {
@@ -50,9 +49,6 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
 
   return (
     <div className="mx-auto max-w-[360px]">
-      <button className="p-2 bg-gray-500 text-white" onClick={onBack}>
-        Back
-      </button>
       <form onSubmit={handleSubmit}>
         <fieldset className="flex  mb-[10px]">
           <legend className="sr-only mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
@@ -94,7 +90,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           </label>
         </fieldset>
         <input
-          className="placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border mb-[10px] py-5 px-[15px] border rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500"
+          className="placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full  mb-[10px] py-5 px-[15px] border rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500"
           type="number"
           placeholder={heightPlaceholder}
           value={height}

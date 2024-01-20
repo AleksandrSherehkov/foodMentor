@@ -6,14 +6,12 @@ import { Button } from '../Button/Button';
 import { physicalExerciseOptions } from '../../data/formOptions';
 
 interface PhysicalExerciseProps {
-  onBack: () => void;
   formData: FormData;
   setFormData: (formData: FormData) => void;
   resetForm: () => void;
 }
 
 export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
-  onBack,
   formData,
   setFormData,
   resetForm,
@@ -30,9 +28,6 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
 
   return (
     <div className="mx-auto max-w-[360px]">
-      <button type="button" className="p-2 bg-gray-500 text-white" onClick={onBack}>
-        Back
-      </button>
       <Title text="Physical exercise" />
       <Description
         text={

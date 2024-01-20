@@ -7,12 +7,11 @@ import { behaviorsOptions } from '../../data/formOptions';
 
 interface BehaviorsProps {
   onNext: () => void;
-  onBack: () => void;
   formData: FormData;
   setFormData: (formData: FormData) => void;
 }
 
-export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFormData }) => {
+export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData }) => {
   const handleCheckboxChange = (checked: boolean, name: string) => {
     const newDestructiveBehaviors = name === 'none' ? {} : { ...formData.destructiveBehaviors };
     if (name !== 'none') {
@@ -39,9 +38,6 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
 
   return (
     <div className="mx-auto max-w-[360px]">
-      <button className="p-2 bg-gray-500 text-white" onClick={onBack}>
-        Back
-      </button>
       <Title text="Destructive behaviors" />
       <Description text="We all have them! Which are yours?" />
       <form onSubmit={handleSubmit} className="mt-[15px]">
@@ -54,7 +50,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
               key={behavior.name}
               className={`flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight transition duration-300 ease-in-out ${
                 formData.destructiveBehaviors[behavior.name]
-                  ? 'border-blue-500 shadow-lg'
+                  ? 'border-blue-300 shadow-lg'
                   : 'hover:border-green-500 hover:shadow-md'
               } focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500`}
             >
