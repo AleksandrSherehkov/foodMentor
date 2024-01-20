@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Header } from './components/Header/Header';
+
 import { MultiStepForm } from './components/MultiStepForm/MultiStepForm';
+
+import { Header } from './components/Header/Header';
 import { initialState } from './data/initialState';
 
 export const App = () => {
