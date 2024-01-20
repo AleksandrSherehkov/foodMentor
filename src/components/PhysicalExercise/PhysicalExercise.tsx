@@ -25,7 +25,9 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success('Final FormData:', formData);
+    toast.success(
+      'Your personal parameters have been successfully collected. Our specialists have already begun developing an individual program that will help you achieve the desired results. Expect your meal plan and exercise recommendations to be ready soon. We strive to make your path to health and happiness as comfortable and effective as possible!'
+    );
     resetForm();
   };
 
