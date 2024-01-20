@@ -3,15 +3,7 @@ import { Goal } from '../Goal/Goal';
 import { MeasureYourself } from '../MeasureYourself/MeasureYourself';
 import { Behaviors } from '../Behaviors/Behaviors';
 import { PhysicalExercise } from '../PhysicalExercise/PhysicalExercise';
-
-const initialState = {
-  goal: '',
-  measurements: 'imperial',
-  height: '',
-  weight: '',
-  destructiveBehaviors: {},
-  activity: '',
-};
+import { initialState } from '../../data/initialState';
 
 export const MultiStepForm = () => {
   const [step, setStep] = useState(1);

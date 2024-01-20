@@ -6,3 +6,9 @@ export interface FormData {
   destructiveBehaviors: Record<string, boolean>;
   activity: string;
 }
+
+export interface Behavior {
+  label: string;
+  name: string;
+  icon: string;
+}

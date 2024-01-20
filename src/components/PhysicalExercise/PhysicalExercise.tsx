@@ -3,13 +3,7 @@ import { FormData } from '../../utils/definitions';
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
 import { Button } from '../Button/Button';
-
-const physicalExerciseOptions = [
-  { label: 'Hardly at all', value: 'Hardly at all' },
-  { label: 'Fitness 1-2\n times a week', value: 'Fitness 1-2 times a week' },
-  { label: 'Fitness 3-5\n times a week', value: 'Fitness 3-5 times a week' },
-  { label: 'Fitness 5-7\n times a week', value: 'Fitness 5-7 times a week' },
-];
+import { physicalExerciseOptions } from '../../data/formOptions';
 
 interface PhysicalExerciseProps {
   onBack: () => void;

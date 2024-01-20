@@ -3,21 +3,7 @@ import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
 import { FormData } from '../../utils/definitions';
 import { Button } from '../Button/Button';
-
-interface Behavior {
-  label: string;
-  name: string;
-  icon: string;
-}
-
-const behaviors: Behavior[] = [
-  { label: "I don't rest\n enough", name: 'dontRestEnough', icon: 'moon' },
-  { label: 'I have a sweet\n tooth', name: 'sweetTooth', icon: 'sweet' },
-  { label: 'I have too\n much soda', name: 'tooMuchSoda', icon: 'soda' },
-  { label: 'I eat many\n salty foods', name: 'saltyFoods', icon: 'salt' },
-  { label: 'I enjoy\n midnight\n snacks', name: 'midnightSnacks', icon: 'snacks' },
-  { label: 'None of the\n above', name: 'none', icon: 'rest' },
-];
+import { behaviorsOptions } from '../../data/formOptions';
 
 interface BehaviorsProps {
   onNext: () => void;
@@ -63,7 +49,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
           <legend className="sr-only mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             Disadvantages:
           </legend>
-          {behaviors.map(behavior => (
+          {behaviorsOptions.map(behavior => (
             <label
               key={behavior.name}
               className={`flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight transition duration-300 ease-in-out ${

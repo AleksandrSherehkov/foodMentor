@@ -1,33 +1,11 @@
 import { FC } from 'react';
 import { Title } from '../Title/Title';
 import { Description } from '../Description/Description';
+import { goalOptions } from '../../data/formOptions';
 interface GoalProps {
   onNext: (value: string) => void;
   goal: string;
 }
-
-const options = [
-  {
-    label: 'Lose\n Weight',
-    value: 'Lose Weight',
-    bg: '/src/assets/images/goalA.svg',
-  },
-  {
-    label: 'Gain\n Muscle',
-    value: 'Gain Muscle',
-    bg: '/src/assets/images/goalB.svg',
-  },
-  {
-    label: 'Develop\n healthy\n habits',
-    value: 'Develop healthy habits',
-    bg: '/src/assets/images/goalC.svg',
-  },
-  {
-    label: 'Increase\n Energy\n Levels',
-    value: 'Increase Energy Levels',
-    bg: '/src/assets/images/goalD.svg',
-  },
-];
 
 export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
   const handleSelection = (value: string) => {
@@ -47,7 +25,7 @@ export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
           <legend className="mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             What are your goals?
           </legend>
-          {options.map(option => (
+          {goalOptions.map(option => (
             <label
               key={option.value}
               style={{
