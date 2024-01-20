@@ -24,12 +24,12 @@ export const goalOptions: GoalOption[] = [
 ];
 
 export const behaviorsOptions: Behavior[] = [
-  { label: "I don't rest\n enough", name: 'dontRestEnough', icon: 'moon' },
-  { label: 'I have a sweet\n tooth', name: 'sweetTooth', icon: 'sweet' },
-  { label: 'I have too\n much soda', name: 'tooMuchSoda', icon: 'soda' },
-  { label: 'I eat many\n salty foods', name: 'saltyFoods', icon: 'salt' },
-  { label: 'I enjoy\n midnight\n snacks', name: 'midnightSnacks', icon: 'snacks' },
-  { label: 'None of the\n above', name: 'none', icon: 'rest' },
+  { label: "I don't rest\n enough", name: 'dontRestEnough', icon: '/icons/moon.svg' },
+  { label: 'I have a sweet\n tooth', name: 'sweetTooth', icon: '/icons/sweet.svg' },
+  { label: 'I have too\n much soda', name: 'tooMuchSoda', icon: '/icons/soda.svg' },
+  { label: 'I eat many\n salty foods', name: 'saltyFoods', icon: '/icons/salt.svg' },
+  { label: 'I enjoy\n midnight\n snacks', name: 'midnightSnacks', icon: '/icons/snacks.svg' },
+  { label: 'None of the\n above', name: 'none', icon: '/icons/rest.svg' },
 ];
 
 export const physicalExerciseOptions: PhysicalExerciseOption[] = [

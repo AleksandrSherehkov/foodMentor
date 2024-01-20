@@ -44,7 +44,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData })
           {behaviorsOptions.map(behavior => (
             <label
               key={behavior.name}
-              className={`flex items-center  p-2 min-w-[172px] min-h-[60px] border rounded-[15px] border-separatorLight transition duration-300 ease-in-out ${
+              className={`flex items-center gap-x-[10px] pl-[15px] min-w-[172px] min-h-[60px] border rounded-[15px] border-separatorLight transition duration-300 ease-in-out ${
                 formData.destructiveBehaviors[behavior.name]
                   ? 'border-red-300 shadow-lg bg-slate-100'
                   : 'hover:border-green-500 hover:shadow-md'
@@ -57,6 +57,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData })
                 onChange={e => handleCheckboxChange(e.target.checked, behavior.name)}
                 checked={formData.destructiveBehaviors[behavior.name] || false}
               />
+              <img src={behavior.icon} alt={behavior.label} className="" width="30" height="30" />
               <p className="whitespace-pre-line text-generalBlack text-xs font-normal  leading-[18px] tracking-[0.3px]">
                 {behavior.label}
               </p>
