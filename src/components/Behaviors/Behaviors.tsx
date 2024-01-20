@@ -58,7 +58,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
       </button>
       <Title text="Destructive behaviors" />
       <Description text="We all have them! Which are yours?" />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="mt-[15px]">
         <fieldset className="flex flex-wrap gap-[15px] mb-[129px]">
           <legend className="sr-only mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             Disadvantages:
@@ -66,7 +66,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, onBack, formData, setFor
           {behaviors.map(behavior => (
             <label
               key={behavior.name}
-              className="className={`flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight `}"
+              className="flex items-center py-3 pl-[15px] pr-6 min-w-[172px] border rounded-[15px] border-separatorLight"
             >
               <input
                 className="sr-only"
