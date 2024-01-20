@@ -20,7 +20,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   setFormData,
 }) => {
   const [showError, setShowError] = useState(false);
-  console.log(`showError:`, showError);
+
   const { height, weight } = formData;
   const isDisabled = !height || !weight;
   const heightPlaceholder = formData.measurements === 'imperial' ? 'Height (ft)' : 'Height (cm)';

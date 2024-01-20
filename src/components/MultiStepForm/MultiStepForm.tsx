@@ -14,6 +14,9 @@ export const MultiStepForm = () => {
   };
 
   const prevStep = () => {
+    if (step === 2) {
+      setFormData({ ...formData, goal: '' });
+    }
     setStep(prevStep => prevStep - 1);
   };
 
