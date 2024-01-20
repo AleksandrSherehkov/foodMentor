@@ -6,7 +6,7 @@ interface DescriptionProps {
 
 export const Description: FC<DescriptionProps> = ({ text }) => {
   return (
-    <p className="whitespace-pre-line mb-[15px] text-darkGray text-sm font-normal leading-[24px] tracking-[0.25px] text-center">
+    <p className="whitespace-pre-line  text-darkGray text-sm font-normal leading-[24px] tracking-[0.25px] text-center">
       {text}
     </p>
   );

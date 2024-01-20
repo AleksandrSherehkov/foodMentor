@@ -45,7 +45,7 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
           'Physical exercise means a lot for a woman who\nwants to lose kilos and works at the office'
         }
       />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="mt-[15px]">
         <fieldset className="flex flex-col items-end  gap-[15px] bg-physicalExercise bg-content bg-no-repeat bg-[left_bottom_53px]">
           <legend className="mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             How active are you during the day?

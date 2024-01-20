@@ -26,7 +26,7 @@ export const Goal: FC<GoalProps> = ({ onNext, goal }) => {
           'Focus on the health benefits you need.\nBalanced nutrition will let you achieve them'
         }
       />
-      <form>
+      <form className="mt-[15px]">
         <fieldset className="flex flex-wrap gap-4">
           <legend className="mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             What are your goals?
