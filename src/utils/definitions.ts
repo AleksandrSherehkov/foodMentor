@@ -1,8 +1,8 @@
 export interface FormData {
   goal: string;
   measurements: string;
-  height: number;
-  weight: number;
+  height: string;
+  weight: string;
   destructiveBehaviors: Record<string, boolean>;
   activity: string;
 }
