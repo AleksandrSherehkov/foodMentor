@@ -6,20 +6,17 @@ import { physicalExerciseOptions } from '../../data/formOptions';
 import { Description } from '../Description/Description';
 import { Title } from '../Title/Title';
 import { Button } from '../Button/Button';
-import { toast } from 'react-toastify';
 
 interface PhysicalExerciseProps {
   formData: FormData;
   setFormData: (formData: FormData) => void;
-  resetForm: () => void;
-  setStep: (step: number) => void;
+  handleFinish: () => void;
 }
 
 export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
   formData,
   setFormData,
-  resetForm,
-  setStep,
+  handleFinish,
 }) => {
   const handleSelection = (value: string) => {
     setFormData({ ...formData, activity: value });
@@ -27,12 +24,8 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
-    toast.success(
-      'Your personal parameters have been successfully collected. Our specialists have already begun developing an individual program that will help you achieve the desired results. Expect your meal plan and exercise recommendations to be ready soon. We strive to make your path to health and happiness as comfortable and effective as possible!'
-    );
-    resetForm();
-    setStep(1);
+
+    handleFinish();
   };
 
   return (

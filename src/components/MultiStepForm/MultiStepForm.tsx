@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import { FormData } from '../../utils/definitions';
-import { initialState } from '../../data/initialState';
 
 import { Goal } from '../Goal/Goal';
 import { MeasureYourself } from '../MeasureYourself/MeasureYourself';
@@ -13,14 +12,17 @@ interface MultiStepFormProps {
   setStep: (step: number) => void;
   formData: FormData;
   setFormData: (formData: FormData) => void;
+  handleFinish: () => void;
 }
-export const MultiStepForm: FC<MultiStepFormProps> = ({ step, setStep, formData, setFormData }) => {
+export const MultiStepForm: FC<MultiStepFormProps> = ({
+  step,
+  setStep,
+  formData,
+  setFormData,
+  handleFinish,
+}) => {
   const nextStep = () => {
     setStep(step + 1);
-  };
-
-  const resetForm = () => {
-    setFormData(initialState);
   };
 
   return (
@@ -42,8 +44,7 @@ export const MultiStepForm: FC<MultiStepFormProps> = ({ step, setStep, formData,
         <PhysicalExercise
           formData={formData}
           setFormData={setFormData}
-          resetForm={resetForm}
-          setStep={setStep}
+          handleFinish={handleFinish}
         />
       )}
     </div>
