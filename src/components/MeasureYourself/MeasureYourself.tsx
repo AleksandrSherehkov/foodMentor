@@ -1,4 +1,4 @@
-import { FC, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 
 import { FormData } from '../../utils/definitions';
 import { convertMeasurements } from '../../utils/convertMeasurements';
@@ -21,11 +21,28 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   setFormData,
 }) => {
   const [showError, setShowError] = useState(false);
-
   const { height, weight } = formData;
   const isDisabled = !height || !weight;
   const heightPlaceholder = formData.measurements === 'imperial' ? 'Height (ft)' : 'Height (cm)';
   const weightPlaceholder = formData.measurements === 'imperial' ? 'Weight (lbs)' : 'Weight (kg)';
+
+  const validateValue = (value: string) => {
+    return value.match(/^\d{0,3}$/) && Number(value) >= 0;
+  };
+
+  const handleHeightChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (validateValue(value)) {
+      setFormData({ ...formData, height: value });
+    }
+  };
+
+  const handleWeightChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (validateValue(value)) {
+      setFormData({ ...formData, weight: value });
+    }
+  };
 
   const handleSelection = (value: string) => {
     if (value !== formData.measurements) {
@@ -37,7 +54,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isDisabled) {
+    if (!height || !weight) {
       setShowError(true);
     } else {
       setShowError(false);
@@ -46,8 +63,8 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   };
 
   useEffect(() => {
-    setShowError(isDisabled);
-  }, [height, isDisabled, weight]);
+    setShowError(!height || !weight);
+  }, [height, weight]);
 
   return (
     <div className="mx-auto max-w-[360px] mt-[90px]">
@@ -96,7 +113,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           type="number"
           placeholder={heightPlaceholder}
           value={height}
-          onChange={e => setFormData({ ...formData, height: e.target.value })}
+          onChange={handleHeightChange}
         />
         <input
           className={`placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border py-5 px-[15px]  rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500 ${
@@ -105,7 +122,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           type="number"
           placeholder={weightPlaceholder}
           value={weight}
-          onChange={e => setFormData({ ...formData, weight: e.target.value })}
+          onChange={handleWeightChange}
         />
         {showError && <ErrorMassage text="Enter your height and weight to continue.(number)" />}
         <Title text="Measure Yourself" />
