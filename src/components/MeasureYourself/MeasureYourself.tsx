@@ -26,21 +26,36 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   const heightPlaceholder = formData.measurements === 'imperial' ? 'Height (ft)' : 'Height (cm)';
   const weightPlaceholder = formData.measurements === 'imperial' ? 'Weight (lbs)' : 'Weight (kg)';
 
-  const validateValue = (value: string) => {
-    const regex = /^\d{0,4}$/;
+  const validateValue = (
+    value: string,
+    name: 'height' | 'weight',
+    measurementSystem: 'metric' | 'imperial'
+  ) => {
+    let regex;
+
+    if (measurementSystem === 'metric') {
+      regex = /^\d{0,3}$/; // Для метрической системы ограничение до 3 цифр
+    } else {
+      if (name === 'height') {
+        regex = /^\d{0,3}$/; // Для имперской системы и роста ограничение до 3 цифр
+      } else {
+        regex = /^\d{0,4}$/; // Для имперской системы и веса ограничение до 4 цифр
+      }
+    }
+
     return regex.exec(value) !== null && Number(value) >= 0;
   };
 
   const handleHeightChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (validateValue(value)) {
+    if (validateValue(value, 'height', formData.measurements)) {
       setFormData({ ...formData, height: value });
     }
   };
 
   const handleWeightChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (validateValue(value)) {
+    if (validateValue(value, 'weight', formData.measurements)) {
       setFormData({ ...formData, weight: value });
     }
   };
@@ -113,6 +128,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           className="placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full  mb-[10px] py-5 px-[15px] border rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500"
           type="number"
           placeholder={heightPlaceholder}
+          name="height"
           value={height}
           onChange={handleHeightChange}
         />
@@ -121,6 +137,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
             !showError ? 'mb-[45px]' : ''
           }`}
           type="number"
+          name="weight"
           placeholder={weightPlaceholder}
           value={weight}
           onChange={handleWeightChange}
