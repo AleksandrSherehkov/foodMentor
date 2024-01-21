@@ -1,5 +1,3 @@
-// utils/measurementUtils.ts
-
 import { FormData } from './definitions';
 
 export const convertMeasurements = (
