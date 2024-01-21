@@ -1,14 +1,13 @@
 import { useState } from 'react';
 
-import { MultiStepForm } from './components/MultiStepForm/MultiStepForm';
+import { initialState } from './data/initialState';
 
 import { Header } from './components/Header/Header';
-import { initialState } from './data/initialState';
+import { MultiStepForm } from './components/MultiStepForm/MultiStepForm';
 import { Modal } from './components/Modal/Modal';
 
 export const App = () => {
   const [formData, setFormData] = useState(initialState);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [step, setStep] = useState(1);
 
