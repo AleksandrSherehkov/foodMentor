@@ -23,6 +23,15 @@ export const Modal: FC<ModalProps> = ({ onClose, formData, resetForm, setStep })
   const trueBehaviors = getTrueDestructiveBehaviors(destructiveBehaviors);
 
   useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
+
+  useEffect(() => {
     setModalContainer(document.getElementById('modal-root'));
   }, []);
 
