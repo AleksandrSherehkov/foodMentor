@@ -7,6 +7,11 @@ import { Title } from '../Title/Title';
 import { Description } from '../Description/Description';
 import { Button } from '../Button/Button';
 import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
+import {
+  heightSchema,
+  weightSchemaImperial,
+  weightSchemaMetric,
+} from '../../utils/validation/measurementsThema';
 
 interface MeasureYourselfProps {
   onNext: () => void;
@@ -21,41 +26,41 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   setFormData,
 }) => {
   const [showError, setShowError] = useState(false);
-  const { height, weight } = formData;
+  const { height, weight, measurements } = formData;
   const isDisabled = !height || !weight;
-  const heightPlaceholder = formData.measurements === 'imperial' ? 'Height (ft)' : 'Height (cm)';
-  const weightPlaceholder = formData.measurements === 'imperial' ? 'Weight (lbs)' : 'Weight (kg)';
+  const heightPlaceholder = measurements === 'imperial' ? 'Height (ft)' : 'Height (cm)';
+  const weightPlaceholder = measurements === 'imperial' ? 'Weight (lbs)' : 'Weight (kg)';
 
   const validateValue = (
     value: string,
     name: 'height' | 'weight',
     measurementSystem: 'metric' | 'imperial'
   ) => {
-    let regex;
-
-    if (measurementSystem === 'metric') {
-      regex = /^\d{0,3}$/; // Для метрической системы ограничение до 3 цифр
-    } else {
+    try {
       if (name === 'height') {
-        regex = /^\d{0,3}$/; // Для имперской системы и роста ограничение до 3 цифр
+        heightSchema.parse(value);
+      } else if (measurementSystem === 'metric') {
+        weightSchemaMetric.parse(value);
       } else {
-        regex = /^\d{0,4}$/; // Для имперской системы и веса ограничение до 4 цифр
+        weightSchemaImperial.parse(value);
       }
+      return true;
+    } catch (error) {
+      return false;
     }
-
-    return regex.exec(value) !== null && Number(value) >= 0;
   };
 
   const handleHeightChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (validateValue(value, 'height', formData.measurements)) {
+
+    if (validateValue(value, 'height', measurements as 'imperial' | 'metric')) {
       setFormData({ ...formData, height: value });
     }
   };
 
   const handleWeightChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (validateValue(value, 'weight', formData.measurements)) {
+    if (validateValue(value, 'weight', measurements as 'imperial' | 'metric')) {
       setFormData({ ...formData, weight: value });
     }
   };
@@ -126,7 +131,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
         </fieldset>
         <input
           className="placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full  mb-[10px] py-5 px-[15px] border rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500"
-          type="number"
+          type="string"
           placeholder={heightPlaceholder}
           name="height"
           value={height}
@@ -136,7 +141,7 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
           className={`placeholder:text-darkGray placeholder:text-sm placeholder:font-normal placeholder:leading-6 placeholder:tracking-[0.25px] w-full border py-5 px-[15px]  rounded-[10px] border-separatorLight outline-none transition duration-300 ease-in-out hover:border-blue-300 focus:border-blue-500 ${
             !showError ? 'mb-[45px]' : ''
           }`}
-          type="number"
+          type="string"
           name="weight"
           placeholder={weightPlaceholder}
           value={weight}
