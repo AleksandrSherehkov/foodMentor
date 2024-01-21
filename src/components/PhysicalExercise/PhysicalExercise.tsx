@@ -37,14 +37,14 @@ export const PhysicalExercise: FC<PhysicalExerciseProps> = ({
         }
       />
       <form onSubmit={handleSubmit} className="mt-[15px] mt=[15px]">
-        <fieldset className="flex flex-col items-end mb-3 gap-[15px] bg-physicalExercise bg-content bg-no-repeat bg-[left_bottom_53px]">
+        <fieldset className="flex flex-col items-center  md:items-end mb-3 gap-[15px] bg-physicalExercise bg-content bg-no-repeat bg-[left_bottom_53px]">
           <legend className="mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             How active are you during the day?
           </legend>
           {physicalExerciseOptions.map(option => (
             <label
               key={option.value}
-              className={`flex items-center  pl-[15px] min-w-[172px] min-h-20 border rounded-[20px] border-separatorLight transition duration-300 ease-in-out ${
+              className={`flex items-center  pl-[15px] min-w-[172px] min-h-20 bg-white border rounded-[20px] border-separatorLight transition duration-300 ease-in-out ${
                 formData.activity === option.value
                   ? 'border-blue-500 shadow-lg scale-105'
                   : 'hover:border-green-500 hover:shadow-md hover:scale-105'

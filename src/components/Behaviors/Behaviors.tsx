@@ -37,7 +37,7 @@ export const Behaviors: FC<BehaviorsProps> = ({ onNext, formData, setFormData })
       <Title text="Destructive behaviors" />
       <Description text="We all have them! Which are yours?" />
       <form onSubmit={handleSubmit} className="mt-[15px]">
-        <fieldset className="flex flex-wrap gap-[15px] mb-[129px]">
+        <fieldset className="flex items-center justify-center flex-wrap gap-[15px] mb-[129px]">
           <legend className="sr-only mb-[15px] text-generalBlack text-sm font-bold leading-[24px] tracking-[0.2px] text-center">
             Disadvantages:
           </legend>
