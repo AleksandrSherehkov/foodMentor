@@ -39,7 +39,12 @@ export const MultiStepForm: FC<MultiStepFormProps> = ({ step, setStep, formData,
       )}
       {step === 3 && <Behaviors onNext={nextStep} formData={formData} setFormData={setFormData} />}
       {step === 4 && (
-        <PhysicalExercise formData={formData} setFormData={setFormData} resetForm={resetForm} />
+        <PhysicalExercise
+          formData={formData}
+          setFormData={setFormData}
+          resetForm={resetForm}
+          setStep={setStep}
+        />
       )}
     </div>
   );
