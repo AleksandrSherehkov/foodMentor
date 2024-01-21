@@ -2,16 +2,12 @@ import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 
 import { FormData } from '../../utils/definitions';
 import { convertMeasurements } from '../../utils/convertMeasurements';
+import { validateValue } from '../../utils/validateValueMeasurements';
 
 import { Title } from '../Title/Title';
 import { Description } from '../Description/Description';
 import { Button } from '../Button/Button';
 import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
-import {
-  heightSchema,
-  weightSchemaImperial,
-  weightSchemaMetric,
-} from '../../utils/validation/measurementsThema';
 
 interface MeasureYourselfProps {
   onNext: () => void;
@@ -30,25 +26,6 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   const isDisabled = !height || !weight;
   const heightPlaceholder = measurements === 'imperial' ? 'Height (ft)' : 'Height (cm)';
   const weightPlaceholder = measurements === 'imperial' ? 'Weight (lbs)' : 'Weight (kg)';
-
-  const validateValue = (
-    value: string,
-    name: 'height' | 'weight',
-    measurementSystem: 'metric' | 'imperial'
-  ) => {
-    try {
-      if (name === 'height') {
-        heightSchema.parse(value);
-      } else if (measurementSystem === 'metric') {
-        weightSchemaMetric.parse(value);
-      } else {
-        weightSchemaImperial.parse(value);
-      }
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
 
   const handleHeightChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
