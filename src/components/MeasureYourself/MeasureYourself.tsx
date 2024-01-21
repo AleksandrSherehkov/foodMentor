@@ -27,7 +27,8 @@ export const MeasureYourself: FC<MeasureYourselfProps> = ({
   const weightPlaceholder = formData.measurements === 'imperial' ? 'Weight (lbs)' : 'Weight (kg)';
 
   const validateValue = (value: string) => {
-    return value.match(/^\d{0,3}$/) && Number(value) >= 0;
+    const regex = /^\d{0,3}$/;
+    return regex.exec(value) !== null && Number(value) >= 0;
   };
 
   const handleHeightChange = (e: ChangeEvent<HTMLInputElement>) => {
