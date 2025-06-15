@@ -7,7 +7,7 @@ import { validateValue } from '../../utils/validateValueMeasurements';
 import { Title } from '../Title/Title';
 import { Description } from '../Description/Description';
 import { Button } from '../Button/Button';
-import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
+import { ErrorMassage } from '../ErrorMessage/ErrorMessage';
 
 interface MeasureYourselfProps {
   onNext: () => void;
